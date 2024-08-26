@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Todo List</h1>
+    <button id="loadBtn">목록 불러오기</button>
+    <ul id = "todoLIstArea"></ul>
+
+    <script>
+        //jQuery 라이브러리의 ajax 함수 (CDN 또는 설치)
+        // axios 라이브러리 이용
+        // fetch 모듈(웹 브라우저 표준)
+        // XMLHttpRequest 객체 (웹 브라우저 표준)
+        // -> 이런 라이브러리들이 ajax를 지원함
+
+        //부모 - EventTarget <- XMLhttpRequestEventTarget <- XMLHttpRequest
+        //xmlr request  를 사용하면 좀 힘들긴해도 
+
+            const   xhr = new XMLHttpRequest();
+            //new 연산자 써줘야함.
+            console.dir(XMLHttpRequest);
+            
+            xhr.onreadystatechange = function(event) {
+                if(xhr.status === 200 && xhr.readyState == 4){
+                    //요청 결과가 모두 로드 되면 실행(onload와 동일)
+                    // console.log(xhr.responseXML);
+                     //console.log("readyState: ",xhr.readyState);
+                    //console.log("status: ",xhr.status);
+                    //console.log(xhr.responseText);
+                    //console.log(xhr.responseType);
+                    // var doc = xhr.responseXML;
+                    // console.log(doc.querySelector("h2"));
+                    var todoListTxt = xhr.responseText;
+                    // console.log(JSON.parse(todoListTxt));
+                    var todoLIst = JSON.parse(todoListTxt)['todoLists'];
+                    var noCnt = JSON.parse(todoListTxt)['noCnt'];
+                    
+                    console.log(todoLIst);
+                    console.log(noCnt);
+                    const todoLIstArea = document.querySelector('#todoLIstArea');
+                    todoLIst.array.forEach(element => {
+                        const liElement = document.createElement("li");
+                        liElement.innerHTML = todo.title;
+                        todo
+                        
+                    });
+                }  
+            }
+        
+
+        var method = "GET";
+        var url = "todoList.json";
+
+        xhr.open(method,url);
+        xhr.send();
+
+        
+
+    </script>
+</body>
+</html>

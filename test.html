@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Example</title>
+  </head>
+  <body>
+    <script>
+      const myObject = {
+        name: "MyObject",
+        data: [1, 2, 3, 4],
+        // 객체에 대한 설명을 저장
+        _description:
+          "This is an object used for demonstration purposes. It contains a name and some data.",
+
+        // 설명을 출력하는 메서드
+        explanation: function () {
+          console.log(this._description);
+        },
+      };
+
+      const anotherObject = {
+        name: "AnotherObject",
+        data: [5, 6, 7, 8],
+
+        // 객체에 대한 설명을 저장
+        _description: "This is another object used for different purposes.",
+
+        // 설명을 출력하는 메서드
+        explanation: function () {
+          console.log(this._description);
+        },
+      };
+    </script>
+  </body>
+</html>

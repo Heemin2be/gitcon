@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>초등학교 저학년용 계산기</h1>
+    <form action=""></form>
+    <fieldset>
+        <legend>계산기</legend>
+        <input type="text" size="2" value="0" class="hang1">
+        <select name="" id="oper">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input type="text" size="2" value="0" class="hang2">
+        <button class="resultBtn">=</button>
+        <span class="resultArea">0</span>
+        
+    </fieldset>
+    <script>
+        
+   
+    
+    window.onload=function() {
+
+        var hang1 = document.getElementsByClassName('hang1')[0];
+        var hang2 = document.querySelectorAll('.hang2')[0];
+        var resultBtn = document.querySelector('.resultBtn');
+        var resultArea = document.querySelector('.resultArea');
+        var oper = document.getElementById('oper');
+        
+        console.log(hang1);
+        console.log(hang2);
+        console.log(resultBtn);
+        console.log(resultArea);
+
+        console.log(hang1.value);   
+    //문자열을 숫자로 변환? 
+    //계산 
+        resultBtn.addEventListener("click",function(event){
+        event.preventDefault(); // form의 기본기능을 잠시 중단
+        var num1 = parseInt(hang1.value);
+        var num2 = parseInt(hang1.value);
+        var oper1 = oper.value;
+        var resultValue = 0;
+
+        //버튼 누르면 계산되게 구현  
+        // switch(oper1) 
+        // {   
+        //     case '+' :  resultValue = num1 + num2;
+        //     case '-' :  resultValue = num1 - num2;
+        //     resultValue = num1.value+num2.value;
+        //     resultArea.innerHTML = resultValue
+        // }
+
+        // else if(oper == '-')
+        // {
+        //     resultArea.value = hang1.value-hang2 
+        // }
+        // else if (oper == '*')
+        // {
+        //     resultArea.value = hang1.value*hang2.value
+        // }
+        
+        });
+        //hang1 + hang 2
+        console.log(hang1.value+oper.value+hang2.value)
+        resultArea.innerHTML=eval(hang1.value+oper.value+hang2.value);
+    }
+    </script>
+</body>
+</html>

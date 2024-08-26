@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+     
+    <script>
+        window.onload=function()
+        {
+            var memoTxt = document.getElementById('memoTxt');
+            //quertSelector('')은 CSS의 선택기(selector)를 그대로 사용 가능.
+            // id는 #으로 시작
+            //class는 .으로 시작
+            //속성은 []로 구분해서 사용.
+            // 태그는 그냥 태그 이름으로
+            var demo = document.querySelector('#demo');
+            var clickBtn = document.querySelector('#clickBtn');
+            var resetBtn = document.querySelector('#resetBtn');
+
+             // TDO :  테스트 주도 개발...
+            //console.log(memoTxt, demo,clickBtn,resetBtn);
+            //console.dir(clickBtn)
+            clickBtn.addEventListener('click',function()
+            {
+                demo.innerText=memoTxt.value
+            }); 
+
+            // 의사 코드
+            // 0. 이벤트 핸들러 만들기 (각자 만들기)
+           
+          
+           
+            //clicBtn.onclick=function(event){}
+            clickBtn.addEventListener('click',function(event){
+                //1. 클릭 되는지 확인
+                // console.log('버튼 클릭');
+
+                //2. 메모 input의 데이터 가져오기
+                //console.dir(memoTxt);
+
+                //3. 가져온 데이터를 텍스트로 변경
+                //선언시 아무것도 안붙이는거 window.memoTxtVal
+                //var은 스코프 범위가 함수 단위다.
+                //let은 자바처럼 스코프 범위가 블럭단위이다.
+                var memoTxtVal = memoTxt.value;
+
+                //4.초기화 시키기 
+                memoTxt.value = "";
+                memoTxt.focus();
+
+            });
+            
+        }
+            
+    </script>
+
+
+</head>
+<body>
+    메모
+    <input type="text" id="memoTxt" value="안녕 세계">
+    <p id = "demo">JavaScript can change HTML content</p>
+
+   <!-- 인터널 적용 방식 -->
+    <button type="button" id="clickBtn" >Click</button>
+    <button type="button" id="resetBtn">Reset</button>
+
+    
+</body>
+</html>

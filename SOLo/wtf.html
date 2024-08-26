@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script>
+      var Desc_space = {
+        write_explain: function write_explain(obj, _description) {
+          obj.descript = _description;
+          obj.explanation = function () {
+            console.log(this.descript);
+          };
+        },
+      };
+
+      Desc_space.write_explain(addEventListener, "콜랍니다");
+      addEventListener.explanation();
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload=function() {
+            var memoTxt = document.getElementById('memoTxt');
+
+            var demo = document.querySelector('#demo');
+            var clickBtn = document.querySelector('#clickBtn');
+            var resetBtn = document.querySelector('#resetBtn');
+
+            
+            // 
+            var handleEvent = function(event) {
+                //console.dir(event);
+                demo.innerHTML += "<br>" + memoTxt.value;
+                memoTxt.value = "";
+                memoTxt.focus();
+            }
+            clickBtn.addEventListener('click', handleEvent);
+
+            // Enter키를 누르면 메모를 텍스트로 변경.
+            // 1. memoTxt 인풋에 키이벤트 핸들러
+            //  (이벤트 핸들러 속성은 onXxx)
+            // 2. Enter키인지 확인
+            // 3. Enter키라면 데이터 처리
+
+            /*
+            
+            */
+            memoTxt.onkeyup = function() {
+                // console.log(memoTxt == this);
+                //console.log(memoTxt.value);
+                //console.log(event.target.value);
+                //console.dir(event.keyCode);
+                if(event.keyCode === 13) {
+                    // 이벤트 핸들러 함수를 호출 한다.
+                    handleEvent(event);
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    메모: <input type="text" id="memoTxt" value="안녕 세계">
+    <p id="demo">JavaScript can change HTML content.</p>
+
+    <!-- 인터널 방식 적용 -->
+    <button type="button" id="clickBtn">Click</button>
+    <button type="button" id="resetBtn">Reset</button>
+</body>
+</html>

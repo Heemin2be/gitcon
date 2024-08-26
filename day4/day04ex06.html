@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 추가요구사항 5,6번 합치기 -->
+    <style>
+        div {
+            border: 1px solid black;
+            
+            padding: 5px;
+            border-radius: 8px;
+        }
+        div.header {
+            overflow: hidden;
+            
+        }
+        div.middle {
+            overflow: hidden;
+        }
+        div.footer {
+            height: 100px;
+        }
+        div.container {
+            width: 1000px;
+            margin: auto;
+        }
+        div.header h1 {
+            text-align: center;
+        }
+        div.header div {
+            height: 50px;
+            
+            
+        }
+        div.header div ul
+        {
+            width: 600px;
+            list-style: none;
+            
+            border: 0px solid black;
+            box-sizing: border-box;
+            line-height: 50px;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+        }
+        
+        div.header div ul li
+        {
+            float: left;
+            width: 80px;
+            text-align: center;
+            
+        }
+
+        div.middle > div:nth-child(1) {
+            width: 180px;
+        }
+        div.middle > div:nth-child(2) {
+            width: 590px;
+        }
+        div.middle > div:nth-child(3) {
+            width: 180px;
+        }
+        div.middle > div {
+            float: left;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>도훈의 소프트웨어 공작실</h1>
+            <div>
+                <nav>
+                    <ul>
+                        <li>Home</li>
+                        <li>Profile</li>
+                        <li>Gallery</li>
+                        <li>Lecture</li>
+                        <li>shop</li>
+                    </ul>
+                </nav>  
+            </div>
+        </div>
+        <div class="middle">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="footer">
+
+        </div>
+    </div>
+</body>
+</html>

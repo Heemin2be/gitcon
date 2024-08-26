@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TodoList</title>
+    <style>
+      td.mdfBtb {
+        /* 수정버튼 안보이는 상태로 만들기 */
+        display: none;
+      }
+    </style>
+    <!-- 객체 설명 파일 -->
+    <script src="./Object_party.js"></script>
+    <script>
+      //할 일
+      //enter로 저장 시키면 내부가 비도록 설정.
+      //새로고침
+      var todoList = [];
+      var seqCnt = 100;
+      Desc_space.write_explain(addEventListener,"문법 :addEventListener(event,function)")
+      console.dir(addEventListener);
+      
+      window.addEventListener("load", function () {
+        //윈도우 객체에서. 이벤트 리스너를 만들어서 로드가 실행되면 다음 함수를 실행
+        //로드 후
+        var tab = document.getElementById("tab"); //추가되는 영역
+        
+        //버튼 모음
+        var saveBtn = document.getElementById("saveBtn"); //저장버튼
+        var searchBtn = document.getElementById("searchBtn"); //검색버튼
+        var resetBtn = document.getElementById("resetBtn"); //새로고침버튼
+        var saveBox = document.getElementById("saveBox"); //메모입력칸
+        var cooldown = false; //쿨타임 기능을 위한 변수
+        
+        //배열에 있는 내용을 그려주는 함수
+        drawList = function (empty = []) {
+          let todoList = window.todoList;
+          //반복 전에 초기화 시켜주기.
+          tab.innerHTML = "";
+          
+          todoList.forEach(function (todoEle) {
+            console.log(todoEle.seq, todoEle.title, todoEle.done);
+
+            tab.innerHTML += 
+            `
+              <tr>
+                <td width="50"><input type="checkbox"></td>
+                <td>${todoEle.title}</td>
+                <td width="50"><button class="editBtn">수정</button></td>
+                <td width="50"><button class="delBtn">삭제</button></td>
+              </tr>
+            `;
+          });
+        };
+
+        //세이브버튼 
+        //투두리스트 배열에 추가 하는 함수
+        hppn = function () {
+          todoList.splice(1, 0, {
+            seq: ++seqCnt,
+            title: saveBox.value,
+            done: false,
+          });
+          console.log("배열을 추가했다!");
+          console.log(todoList);
+        };
+        saveBtn.addEventListener("click", hppn);
+        //input에 들어있는 saveBox 찾아 키업이벤트 핸들러설정
+        saveBox.onkeyup = function (event) {
+          if (cooldown) return; // 쿨타임 설정
+          if (event.keyCode === 13) {
+            console.log("Enter key pressed: ", event.target.value);
+            //엔터일 때 실행
+            //console.log(saveBox.value);
+            hppn();
+            drawList();
+            cooldown = true;
+            setTimeout(function () {
+              cooldown = false;
+            }, 500);
+          }
+        };
+      });
+    </script>
+  </head>
+  <body>
+    <h1>ToDoList</h1>
+    메모 :
+    <input type="text" id="saveBox" value="3" placeholder="여기에 입력하시오" />
+    <button type="button" id="saveBtn">저장</button>
+    <button id="resetBtn">새로고침</button>
+    <hr />
+    검색 : <input type="text" id="searchbox" />
+    <hr />
+    <table width="500" border="1">
+      <thead>
+        <tr>
+          <th width="50">쳌박</th>
+          <th>할일</th>
+          <th width="50">수정</th>
+          <th width="50">삭제</th>
+        </tr>
+      </thead>
+      <tbody id="tab"></tbody>
+    </table>
+    <div style="text-align: right; width: 250px"></div>
+  </body>
+</html>
